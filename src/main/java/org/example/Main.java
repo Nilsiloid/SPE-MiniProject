@@ -1,17 +1,140 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.println("Hello and welcome!");
+// package calculator;
+import java.util.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+public class Main {
+    private static final Logger logger = LogManager.getLogger(App.class);
+    public static void main(String[] args){
+        Scanner reader = new Scanner(System.in);
+        int op, flag=0;
+        double num, exp, ans;
+        int number, res;
+        System.out.println("------------Calculator--------------");
+        do{
+            System.out.println("Choices of Operations:");
+            System.out.println("1. Square root");
+            System.out.println("2. Factorial");
+            System.out.println("3. Natural Log");
+            System.out.println("4. Power");
+            System.out.println("5. Exit");
+            System.out.print("Enter your choice(number): ");
+            op = reader.nextInt();
+            if(op==5) flag = 1;
+            else{
+                switch(op){
+
+                    case 1:  // Square Root
+                        System.out.println("You choose Square Root!!");
+                        System.out.print("Enter number: ");
+                        num = reader.nextDouble();
+                        ans = squareRoot(num);
+                        System.out.println(ans);
+                        break;
+
+                    case 2: //Factorial
+                        System.out.println("You choose Factorial!!");
+                        System.out.print("Enter number: ");
+                        number = reader.nextInt();
+                        res = factorial(number);
+                        System.out.println(res);
+                        break;
+
+                    case 3: //Natural Log
+                        System.out.println("You choose Natural Log!!");
+                        System.out.print("Enter number: ");
+                        num = reader.nextDouble();
+                        ans = naturalLog(num);
+                        System.out.println(ans);
+                        break;
+
+                    case 4: //Power
+                        System.out.println("You choose Power!!");
+                        System.out.print("Enter number: ");
+                        num = reader.nextDouble();
+                        System.out.print("exponent: ");
+                        exp = reader.nextDouble();
+                        ans = power(num,exp);
+                        System.out.println(ans);
+                        break;
+
+                    default:
+                        System.out.println("Exiting due to invalid input!!");
+                        flag = 1;
+                }
+            }
+        }while(flag == 0);
     }
+
+    public static double squareRoot(double num){
+        double c = Math.sqrt(num);
+        System.out.println();
+        System.out.println("The Result is "+c);
+        System.out.println();
+
+        logger.info("[SQUARE_ROOT OPERATION] [SUCCESS] " + num);
+        logger.info("[SQUARE_ROOT OPERATION] [RESULT] " + c);
+
+        return c;
+    }
+
+    public static int factorial(int num){
+        int c = num ;
+        for(int i=num-1; i>=1; i--) c = c*i;
+        System.out.println();
+        System.out.println("The Result is "+c);
+        System.out.println();
+
+        logger.info("[FACTORIAL OPERATION] [SUCCESS] " + num);
+        logger.info("[FACTORIAL OPERATION] [RESULT] " + c);
+
+        return c;
+    }
+    public static double naturalLog(double num){
+        double c = Math.log(num);
+        System.out.println();
+        System.out.println("The Result is "+ c);
+        System.out.println();
+
+        logger.info("[LOGARITHM OPERATION] [SUCCESS] " + num);
+        logger.info("[LOGARITHM OPERATION] [RESULT] " + c);
+
+        return c;
+    }
+    public static double power(double num, double exp){
+        double c = Math.pow(num,exp);
+        System.out.println();
+        System.out.println("The Result is "+ c);
+        System.out.println();
+
+        logger.info("[POWER OPERATION] [SUCCESS] " + num);
+        logger.info("[POWER OPERATION] [RESULT] " + c);
+
+        return c;
+    }
+
 }
+
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
+//
+//import java.util.*;
+////TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+//// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+//public class Main {
+//    public static void main(String[] args) {
+//
+//        private static final Logger logger = LogManager.getLogger(Main.class);
+//        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
+//        // to see how IntelliJ IDEA suggests fixing it.
+//        System.out.println("Hello and welcome!");
+//
+//        for (int i = 1; i <= 5; i++) {
+//            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
+//            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
+//            System.out.println("i = " + i);
+//        }
+//    }
+//}
