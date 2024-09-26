@@ -3,7 +3,7 @@
   hosts: all
   connection: local
   vars:
-    ansible_python_interpreter: /usr/bin/python3
+    ansible_python_interpreter: /usr/bin/python3.8
   tasks:
     - name: Pull image
       docker_image:
@@ -14,5 +14,4 @@
         name: docker
         state: started
     - name: Running container
-      shell: docker run -it -d --name Calculator
-        nilay95/calculator
+      shell: docker run -it -d --name Calculator nilay95/calculator
