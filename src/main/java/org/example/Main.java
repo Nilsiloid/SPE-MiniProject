@@ -21,7 +21,7 @@ public class Main {
             try {
                 switch (choice) {
                     case 1:
-                        System.out.print("Enter a number: ");
+                        System.out.print("Enter a number(eg. 12): ");
                         double num = scanner.nextDouble();
                         if (num < 0) {
                             logger.error("Attempt to take square root of negative number: " + num);
